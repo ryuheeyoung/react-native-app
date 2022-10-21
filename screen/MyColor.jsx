@@ -1,10 +1,13 @@
-import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { FlatList, Text, View } from "react-native";
 
+import { useAtom } from "jotai";
+
 import { styles } from "./MyColor.styles";
+import { atomColor } from "../store/atomColor";
 
 const MyColor = ({ mix = false, length = 4, onFinish = () => void 0 }) => {
-  const [data, setData] = useState();
+  const [color, setColor] = useAtom(atomColor);
 
   const getColor = () => {
     let hex = "#";
@@ -41,7 +44,8 @@ const MyColor = ({ mix = false, length = 4, onFinish = () => void 0 }) => {
         const color = getColor();
         colors.push({ id: i + 1, color });
       }
-      setData(colors);
+
+      setColor(colors);
     }
   }, [mix, length]);
 
@@ -51,9 +55,9 @@ const MyColor = ({ mix = false, length = 4, onFinish = () => void 0 }) => {
 
   return (
     <View style={styles().container}>
-      {data && (
+      {color && (
         <FlatList
-          data={data}
+          data={color}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
         ></FlatList>

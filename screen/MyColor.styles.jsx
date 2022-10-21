@@ -5,7 +5,6 @@ export const styles = (color) =>
     container: {
       flex: 2,
       marginVertical: "auto",
-      marginTop: StatusBar.currentHeight + 45 || 45,
     },
     item: {
       backgroundColor: color || "red",

@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, View } from 'react-native';
+import { styles } from './screen/App.styles';
+import Buttons from './screen/Buttons';
 import MyColor from './screen/MyColor';
 
 export default function App() {
@@ -16,23 +18,18 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <MyColor mix={mix} length={4} onFinish={onFinish} />  
-      <View style={styles.btnContainer}>
+      <View style={styles.headerContainer}>
         <Button onPress={onPress} title={`오늘의 컬러 추천`}></Button>
+      </View>
+      <View style={styles.bodyContainer}>
+        <MyColor mix={mix} length={4} onFinish={onFinish} />  
+        <Buttons />
+      </View>
+      <View style={styles.footerContainer}>
+        
       </View>
       <StatusBar style="auto" />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  btnContainer: {
-    flex: 2
-  }
-});

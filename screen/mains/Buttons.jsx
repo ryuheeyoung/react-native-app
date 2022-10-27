@@ -1,10 +1,10 @@
-import { Button, View } from "react-native";
 import { useAtom } from "jotai";
-import { atomColor, atomHateColor, atomLikeColor } from "../store/atomColor";
+import { Button, View } from "react-native";
+import { atomColor, atomHateColor, atomLikeColor } from "../../store/atomColor";
 import { styles } from "./Buttons.styles";
 
 const Buttons = () => {
-  const [color, setColor] = useAtom(atomColor);
+  const [color] = useAtom(atomColor);
   const [like, setLike] = useAtom(atomLikeColor);
   const [hate, setHate] = useAtom(atomHateColor);
 

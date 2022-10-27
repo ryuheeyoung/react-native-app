@@ -3,8 +3,8 @@ import { FlatList, Text, View } from "react-native";
 
 import { useAtom } from "jotai";
 
+import { atomColor } from "../../store/atomColor";
 import { styles } from "./MyColor.styles";
-import { atomColor } from "../store/atomColor";
 
 const MyColor = ({ mix = false, length = 4, onFinish = () => void 0 }) => {
   const [color, setColor] = useAtom(atomColor);

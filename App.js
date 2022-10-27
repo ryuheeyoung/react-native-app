@@ -1,35 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { Button, View } from 'react-native';
-import { styles } from './screen/App.styles';
-import Buttons from './screen/Buttons';
-import MyColor from './screen/MyColor';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Collect from './screen/collects/Collect';
+import Main from './screen/mains/Main';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [mix, setMix] = useState(null);
-
-  const onPress = () => {
-    setMix(true);
-  }
-
-  const onFinish = () => {
-    setMix(false);
-  };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Button onPress={onPress} title={`오늘의 컬러 추천`}></Button>
-      </View>
-      <View style={styles.bodyContainer}>
-        <MyColor mix={mix} length={4} onFinish={onFinish} />  
-        <Buttons />
-      </View>
-      <View style={styles.footerContainer}>
-        
-      </View>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='Home' component={Main}/>
+        <Stack.Screen name="Collect" component={Collect} />
+      </Stack.Navigator>
+
+    </NavigationContainer>
+
   );
 }
 
